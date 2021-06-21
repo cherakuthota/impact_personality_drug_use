@@ -123,18 +123,18 @@ def feature_plot(importances, X_train, y_train):
     
     # Display the five most important features
     indices = np.argsort(importances)[::-1]
-    columns = X_train.columns.values[indices[:8]]
-    values = importances[indices][:8]
+    columns = X_train.columns.values[indices[:7]]
+    values = importances[indices][:7]
 
     # Creat the plot
     #fig = pl.figure(figsize = (9,5))
-    pl.title("Normalized Weights for First Five Most Predictive Features", fontsize = 16)
-    pl.bar(np.arange(8), values, width = 0.6, align="center", color = '#00A000', \
+    pl.title(f"Normalized Weights for First Seven Most Predictive Features of {y_train.name}", fontsize = 16)
+    pl.bar(np.arange(7), values, width = 0.6, align="center", color = '#00A000', \
           label = "Feature Weight")
-    pl.bar(np.arange(8) - 0.3, np.cumsum(values), width = 0.3, align = "center", color = '#00A0A0', \
+    pl.bar(np.arange(7) - 0.3, np.cumsum(values), width = 0.3, align = "center", color = '#00A0A0', \
           label = "Cumulative Feature Weight")
-    pl.xticks(np.arange(8), columns)
-    pl.xlim((-0.5, 7.5))
+    pl.xticks(np.arange(7), columns)
+    pl.xlim((-0.5, 6.5))
     pl.ylabel("Weight", fontsize = 12)
     pl.xlabel("Feature", fontsize = 12)
     pl.xticks(rotation=90)
